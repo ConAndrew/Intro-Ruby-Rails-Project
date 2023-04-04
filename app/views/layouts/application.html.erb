@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RestaurantApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/headers' %>
+    <%= render 'layouts/breadcrumb_nav' %>
+    <div class="container-fluid resturant_conatainer">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footers' %>
+  </body>
+</html>
