@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Restaurant Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= 'active' if params[:action] == "index" && params[:controller] == "dashboards" %>">
+            <a class="nav-link" href="/dashboards/index">Home</a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:controller] == "restaurants" %>">
+            <a class="nav-link" href="/restaurants">Restaurant</a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:controller] == "foods" %>">
+            <a class="nav-link" href="/foods">Food</a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:controller] == "users" %>">
+            <a class="nav-link" href="/users">User</a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:controller] == "reviews" %>">
+            <a class="nav-link" href="/reviews">Review</a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:action] == "about" %>">
+            <a class="nav-link" href="/dashboards/about">About</a>
+          </li>
+        </ul>
+      </div>
+      <% if params[:controller] == "restaurants" || params[:controller] == "dashboards"%>
+        <div class="search-container">
+          <form action="/search">
+            <input name="q" type="text" placeholder="Restaurant Name.." >
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      <% end %>
+
+    </nav>
+
+</div>

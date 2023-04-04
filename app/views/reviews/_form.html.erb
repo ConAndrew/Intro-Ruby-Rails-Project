@@ -1,0 +1,37 @@
+<%= form_with(model: review, local: true) do |form| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Description:" %>
+    <%= form.text_field :description, id: :review_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label "User:" %>
+    <%= form.select :user_id, options_for_select(@users.map{ |user| [user.full_name, user.id]}, form.object.new_record? ? nil :form.object.user_ids), :prompt => 'Select One' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Food:" %>
+    <%= form.select :food_id, options_for_select(@foods.collect{ |food| [food.name, food.id]}, form.object.new_record? ? nil :form.object.food_ids), :prompt => 'Select One' %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Restaurant:" %>
+    <%= form.select :restaurant_id, options_for_select(@restaurants.collect{ |restaurant| [restaurant.name, restaurant.id]}, form.object.new_record? ? nil :form.object.restaurant_ids), :prompt => 'Select One' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
