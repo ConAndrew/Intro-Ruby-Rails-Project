@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
+temp_auto_push.bat
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -17,3 +18,4 @@
 /yarn-error.log
 
 .byebug_history
+branch_structure.json
