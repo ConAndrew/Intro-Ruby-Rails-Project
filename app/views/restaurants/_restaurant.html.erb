@@ -1,0 +1,16 @@
+<table class="table table-sm-3 table-bordered table-hover table-inverse table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

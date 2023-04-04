@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Restaurants</h1>
+
+<%= render partial: 'restaurants/search' %><br>
+<table class="table table-sm-3 table-bordered table-hover table-inverse table-responsive">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :name, "Name", default_order: :asc)%></th>
+      <th><%= sort_link(@q, :address, "Address", default_order: :asc)%></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <%= link_to 'New Restaurant', new_restaurant_path %>
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= link_to 'Show', restaurant %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="flickr_pagination">
+  <div class="page_info">
+    <%= page_entries_info @restaurants %>
+  </div>
+  <%= will_paginate @restaurants, :container => false %>
+</div>
+

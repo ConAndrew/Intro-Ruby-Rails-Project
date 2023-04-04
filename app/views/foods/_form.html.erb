@@ -1,0 +1,33 @@
+<%= form_with(model: food, local: true) do |form| %>
+  <% if food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+      <% food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Name:" %>
+    <%= form.text_field :name, id: :food_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Price:" %>
+    <%= form.text_field :price, id: :food_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Restaurant:" %>
+    <%= form.select :restaurant_id, options_for_select(@restaurants.collect{ |restaurant| [restaurant.name, restaurant.id]}, form.object.new_record? ? nil :form.object.restaurant_ids), :prompt => 'Select One' %>
+      <% byebug %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
